@@ -77,7 +77,7 @@ Question: What is this command doing? You should be able to see the application 
   
 11. In Jenkins, install the "OWASP Dependency-Check" plug-in
 
-    a. Navigating to "Manage Jenkins" > "Plugins" > "Available plugins" .
+    a. Navigate to "Manage Jenkins" > "Plugins" > "Available plugins" > Search and install
 
  	b. Then configure it by navigating to "Manage Jenkins" > "Tools" > "Add Dependency-Check > Name: "DP-Check" > check "install automatically" > Add Installer: "Install from github.com"
 
@@ -91,14 +91,14 @@ Question: What is this plugin for?  What is it doing?  When does it do it?  Why 
     
     Hint pt 2: NOW does the pipeline complete? Is the application running?  If not: What happened to that RUNNING PROCESS after the deploy STAGE COMPLETES? (stayAlive)
 
-14. After the application has successfully deployed, create another EC2 (t3.micro) called "Monitoring".  Install Prometheus and Grafana and then configure it to monitor the activity on the server running the application. 
+14. After the application has successfully deployed, create another EC2 (t3.micro) called "Monitoring".  Install Prometheus and Grafana and configure it to monitor the activity on the server running the application. 
 
 15. Document! All projects have documentation so that others can read and understand what was done and how it was done. Create a README.md file in your repository that describes:
 
 	  a. The "PURPOSE" of the Workload,
 
   	b. The "STEPS" taken (and why each was necessary/important),
-      NOTE: Were steps 4-9 absolutely necessary for the CICD pipeline? Why or why not?
+      Question: Were steps 4-9 absolutely necessary for the CICD pipeline? Why or why not?
     
   	c. A "SYSTEM DESIGN DIAGRAM" that is created in draw.io (IMPORTANT: Save the diagram as "Diagram.jpg" and upload it to the root directory of the GitHub repo.),
 
