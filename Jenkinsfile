@@ -36,7 +36,7 @@ pipeline {
             	echo "Python path before: $PYTHONPATH"
             	export PYTHONPATH=$PYTHONPATH:${WORKSPACE}
             	echo "Python path after: $PYTHONPATH"
-            	pytest --pythonpath=${WORKSPACE} ./tests/unit/ --verbose --junit-xml test-reports/results.xml
+            	pytest ./tests/unit/ --verbose --junit-xml test-reports/results.xml
                 '''
             }
             post {
