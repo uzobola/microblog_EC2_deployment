@@ -22,6 +22,9 @@ pipeline {
 
                 # Compile translations
                 flask translate compile
+                
+                # Run the application
+                gunicorn -b :5000 -w 4 microblog:app
                 '''
             }
         }
