@@ -22,9 +22,12 @@ pipeline {
 
                 # Compile translations
                 flask translate compile
+
+		# This stops any existing gunicorn processes. ( Avoids potential port conflicts just in case the new instance tries to bind t othe same port)
+                pkill gunicorn || true
                 
-                # Run the application
-                gunicorn -b :5000 -w 4 microblog:app
+                # Run the application in the background
+                gunicorn -b :5000 -w 4 microblog:app &
                 '''
             }
         }
