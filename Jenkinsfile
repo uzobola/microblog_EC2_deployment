@@ -28,9 +28,15 @@ pipeline {
         stage ('Test') {
             steps {
                 sh '''#!/bin/bash
-                source venv/bin/activate
+                #source venv/bin/activate
                 #py.test ./tests/unit/ --verbose --junit-xml test-reports/results.xml
-		pytest --pythonpath=${WORKSPACE} ./tests/unit/ --verbose --junit-xml test-reports/results.xml
+		source venv/bin/activate
+            	echo "Current directory: $(pwd)"
+            	echo "Directory contents: $(ls -la)"
+            	echo "Python path before: $PYTHONPATH"
+            	export PYTHONPATH=$PYTHONPATH:${WORKSPACE}
+            	echo "Python path after: $PYTHONPATH"
+            	pytest --pythonpath=${WORKSPACE} ./tests/unit/ --verbose --junit-xml test-reports/results.xml
                 '''
             }
             post {
