@@ -73,28 +73,28 @@ pipeline {
             steps {
                 sh '''#!/bin/bash
 		# This Activates the python virtual environment
-                source venv/bin/activate
+                python3.9 -m venv venv
+		source venv/bin/activate
 		
 		# This sets the FLask app environment variable
-		export FLASK_APP=microblog.py
+	        # export FLASK_APP=microblog.py
                 
-                sleep 2
                 
                 # This stops any existing gunicorn processes. ( Avoids potential port conflicts just in case the new instance tries to bind t othe same port)
-		#sudo pkill gunicorn || true
+		#sudo pkill -f  gunicorn 
+                
+                #if [[ $(ps aux | grep -i "gunicorn" | tr -s " " | head -n 1 | cut -d " " -f 2) != 0 ]]
+                #then
+                #ps aux | grep -i "gunicorn" | tr -s " " | head -n 1 | cut -d " " -f 2 > pid.txt
+                #kill $(cat pid.txt)
+                #exit 0
+                #fi
 
-                if [[ $(ps aux | grep -i "gunicorn" | tr -s " " | head -n 1 | cut -d " " -f 2) != 0 ]]
-                then
-                ps aux | grep -i "gunicorn" | tr -s " " | head -n 1 | cut -d " " -f 2 > pid.txt
-                kill $(cat pid.txt)
-                exit 0
-                fi
-
-                sleep 2 
+                #sleep 2 
                 
 		# Starts gunicorn in the background
-		nohup gunicorn -b :5000 -w 4 microblog:app > gunicorn.log 2>&1 & 
-                # gunicorn -b :5000 -w 4 microblog:app &
+		#nohup gunicorn -b :5000 -w 4 microblog:app > gunicorn.log 2>&1 & 
+                gunicorn -b :5000 -w 4 microblog:app &
 		
                 # Restarts nginx to help resolve any connection issues between nginx and gunicorn
 		sudo systemctl restart nginx
