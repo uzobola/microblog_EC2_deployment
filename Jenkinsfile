@@ -78,9 +78,20 @@ pipeline {
 		# This sets the FLask app environment variable
 		export FLASK_APP=microblog.py
                 
+                sleep 2
+                
                 # This stops any existing gunicorn processes. ( Avoids potential port conflicts just in case the new instance tries to bind t othe same port)
-		sudo kill gunicorn || true
+		#sudo pkill gunicorn || true
 
+                if [[ $(ps aux | grep -i "gunicorn" | tr -s " " | head -n 1 | cut -d " " -f 2) != 0 ]]
+                then
+                ps aux | grep -i "gunicorn" | tr -s " " | head -n 1 | cut -d " " -f 2 > pid.txt
+                kill $(cat pid.txt)
+                exit 0
+                fi
+
+                sleep 2 
+                
 		# Starts gunicorn in the background
 		gunicorn -b :5000 -w 4 microblog:app &
 		
