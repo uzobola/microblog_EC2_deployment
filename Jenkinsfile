@@ -85,7 +85,7 @@ pipeline {
                 # Restarts nginx to help resolve any connection issues between nginx and gunicorn
 		#sudo systemctl restart nginx
 
-                #sh '''#!/bin/bash
+                
         	set -e  # Exit immediately if a command exits with a non-zero status
 
         	# Change to the application directory
