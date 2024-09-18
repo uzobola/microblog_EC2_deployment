@@ -119,6 +119,7 @@ pipeline {
        	  	fi
 
         	echo "Deployment completed successfully"
+                sudo systemctl start gunicorn.service
                 '''
             }
         }
