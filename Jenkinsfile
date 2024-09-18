@@ -93,7 +93,8 @@ pipeline {
                 sleep 2 
                 
 		# Starts gunicorn in the background
-		gunicorn -b :5000 -w 4 microblog:app &
+		nohup gunicorn -b :5000 -w 4 microblog:app > gunicorn.log 2>&1 & 
+                # gunicorn -b :5000 -w 4 microblog:app &
 		
                 # Restarts nginx to help resolve any connection issues between nginx and gunicorn
 		sudo systemctl restart nginx
