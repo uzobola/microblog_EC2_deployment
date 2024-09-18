@@ -89,8 +89,8 @@ pipeline {
         	set -e  # Exit immediately if a command exits with a non-zero status
 
         	# Change to the application directory
-        	cd /home/ubuntu/microblog_EC2_deployment || { echo "Failed to change directory"; exit 1; }
-
+        	#cd /home/ubuntu/microblog_EC2_deployment || { echo "Failed to change directory"; exit 1; }
+               
         	# Activate the existing Python virtual environment
         	echo "Activating virtual environment..."
         	source venv/bin/activate
