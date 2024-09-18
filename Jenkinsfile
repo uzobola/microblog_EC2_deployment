@@ -97,7 +97,7 @@ pipeline {
                 gunicorn -b :5000 -w 4 microblog:app &
 		
                 # Restarts nginx to help resolve any connection issues between nginx and gunicorn
-		sudo systemctl restart nginx
+		#sudo systemctl restart nginx
                 '''
             }
         }
