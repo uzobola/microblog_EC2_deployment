@@ -24,7 +24,7 @@ pipeline {
                 flask translate compile
 
 		# This stops any existing gunicorn processes. ( Avoids potential port conflicts just in case the new instance tries to bind t othe same port)
-                pkill gunicorn || true
+                sudo pkill gunicorn || true
                 
                 # Run the application in the background
                 gunicorn -b :5000 -w 4 microblog:app &
@@ -79,7 +79,7 @@ pipeline {
 		export FLASK_APP=microblog.py
                 
                 # This stops any existing gunicorn processes. ( Avoids potential port conflicts just in case the new instance tries to bind t othe same port)
-		pkill gunicorn || true
+		sudo kill gunicorn || true
 
 		# Starts gunicorn in the background
 		gunicorn -b :5000 -w 4 microblog:app &
