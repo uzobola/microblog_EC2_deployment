@@ -1,95 +1,51 @@
-Navigate to the pipeline directory within the Jenkins "workspace"
 
-( I used $find / -type d -name "workspace" 2>/dev/null to find the workspace)
-
-$cd /var/lib/jenkins/workspace/deployment2_main
-
-**Activate the Python Virtual Environment**
-
-source venv/bin/activate
-
-A python **virtual environment** is a directory that contains a Python runtime, libraries, and scripts specific to a python project. It isolates the Python environment for a specific project ( In this case, the retail bank application) from other Python projects on the same system.
-
-A benefit of python virtual environments is that this isolation of projects allows for the management of dependencies, versions and libraries specific to one project without affecting others.
-
-**Installing AWS EB CLI on the Jenkins Server**
-
-( The AWS Elastic Beanstalk Command Line Interface (EB CLI) is a tool that helps manage the automated deployment of applications on AWS Elastic Beanstalk directly from the local repository)
-
-$ pip install awsebcli
-
-$ $eb ---version
-
-Configuring AWS CLI on the Server ( Configuring the AWS Command Line Interface (CLI) helps with the seamless management of AWS services directly from the command line. )
-
-$ aws configure
-
-a. Enter your access key
-
-b. Enter your secret access key
-
-c. region: "us-east-1"
-
-d. output format" "json"
-
-e. check to see if AWS CLI has been configured by entering:
-
-$ aws ec2 describe-instancesMicroblog EC2 Deployment
-========================
-
-### **Clone this repo to your GitHub account.**
+**Clone this repo to your GitHub account.**
 
 GitHub is the source code management tool of choice. Cloning the repository makes the code available in the developer's local environment. Managing codebase with SCM tools like GitHub ensures that as collaboration happens, all changes are tracked, and versions managed appropriately. This step also facilitates integration with automation tools in our CI/CD pipeline, e.g., Jenkins.
 
-### Create Jenkins Server
+**Create Jenkins Server
 
 Create an Ubuntu EC2 instance (t3.micro) named "Jenkins" and install Jenkins onto it. Be sure to configure the security group to allow for SSH and HTTP traffic in addition to the ports required for Jenkins and any other services needed.
 
-Script to Install Jenkins were created with the following steps.
+Script to Install Jenkins was created with the following steps.
 
 **Steps to Install Jenkins**
 
 Updates package lists and installs the following
-================================================
 
 sudo apt update && sudo apt install fontconfig openjdk-17-jre software-properties-common &&
 
 Adds the deadsnakes PPA Repository and installs python 3.7
-==========================================================
 
 sudo add-apt-repository ppa:deadsnakes/ppa && sudo apt install python3.7 python3.7-venv
 
 This downloads the Jenkins repository Key
-=========================================
 
 sudo wget -O /usr/share/keyrings/jenkins-keyring.asc <https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key>
 
-#This adds the Jenkins repo to the systems sources list echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" <https://pkg.jenkins.io/debian-stable> binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+#This adds the Jenkins repo to the system's sources list echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" <https://pkg.jenkins.io/debian-stable> binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
 
-This updates the package lists , installs , starts and checks the status of the Jenkins service.
-================================================================================================
+This updates the package lists, installs, starts, and checks the status of the Jenkins service.
 
-sudo apt-get update sudo apt-get install jenkins sudo systemctl start jenkins sudo systemctl status jenkins
+sudo apt-get update sudo apt-get install jenkins sudo systemctl start jenkins sudo systemctl status Jenkins
 
-### Configure the server by installing 'python3.9', 'python3.9-venv', 'python3-pip', and 'nginx'.
+#Configure the server by installing 'python3.9', 'python3.9-venv', 'python3-pip', and 'nginx'.
 
-Steps to Configure the Jenkins server
+Steps to Configure the Jenkins Server
 
 #Install python3.9 sudo apt install python3.9 python3.9-venv
 
 #Install NGINX sudo apt update && sudo apt install nginx
 
-Clone your GH repository to the server, create and activate a python virtual environment
+Clone your GH repository to the server, create and activate a Python virtual environment
 
 #Clone repo git clone <https://github.com/uzobola/microblog_EC2_deployment.git>
 
-Create and Activate python Virtual Environment in the applications directory
-============================================================================
+Create and activate Python Virtual Environment in the applications directory
 
 cd /path/to/application python3.9 -m venv venv source venv/bin/activate
 
 In the virtual environment, install requirements file and required packages
-===========================================================================
 
 pip install -r requirements.txt pip install gunicorn mymysql cryptograpy
 
@@ -103,7 +59,7 @@ FLASK_APP=[microblog.py](http://microblog.py)
 
 #Upgrade the database to the latest required version flask db upgrade
 
-### Set up Nginx as a Reverse Proxy
+## **Set up Nginx as a Reverse Proxy**
 
 The '/etc/nginx/sites-enabled/default file' is the default server configuration file for nginx. The location block values below sets up nginx as a proxy server for forwarding of all incoming requests to the application running on port 5000. This allows Nginx to handle such tasks like SSL termination , load balancing and generating static files.
 
