@@ -1,13 +1,13 @@
 # Microblog EC2 Deployment
----
 
 
----
+
+
 
 ---
 ### Clone repo to  GitHub account.
 GitHub is the source code management tool of choice. Cloning the repository makes the code available in the developer's local environment. Managing the codebase with SCM tools like GitHub ensures that all changes are tracked and versions are managed appropriately as collaboration happens. This step facilitates integration with automation tools in our CI/CD pipeline, e.g., Jenkins.
----
+
 
 ---
 ### **Create Jenkins Server**
@@ -38,7 +38,7 @@ A script to install Jenkins was created using the following steps:
 
 - #Install NGINX 
   sudo apt update && sudo apt install nginx
---- 
+  
 
 ---
 ### **Clone your GH repository to the server, create and activate a Python virtual environment**
@@ -60,7 +60,7 @@ The Microblog application runs on FLASK. Setting the environment variable to [mi
 
 - #Upgrade the database to the latest required version 
  flask db upgrade
----
+
 
 ---
 ### **Set up Nginx as a Reverse Proxy**
