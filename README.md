@@ -1,5 +1,6 @@
 # Microblog EC2 Deployment
 
+![Diagram (1)](https://github.com/user-attachments/assets/5be367a2-4d3c-47c6-9b7d-f27aefc86101)
 
 
 
