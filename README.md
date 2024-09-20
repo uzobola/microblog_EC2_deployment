@@ -5,18 +5,20 @@
 
 
 ---
-### Clone repo to  GitHub account.
+### **Clone repo to  GitHub account**
 GitHub is the source code management tool of choice. Cloning the repository makes the code available in the developer's local environment. Managing the codebase with SCM tools like GitHub ensures that all changes are tracked and versions are managed appropriately as collaboration happens. This step facilitates integration with automation tools in our CI/CD pipeline, e.g., Jenkins.
 
 
 ---
+<p>
 ### **Create Jenkins Server**
 Create an Ubuntu EC2 instance (t3.micro) named "Jenkins" and install Jenkins onto it. 
-A script to install Jenkins was created using the following steps:
-
+A script to install Jenkins was created using the following steps: </p>
+<p>
 **Steps to Install Jenkins**
 #Updates package lists and installs the following
   - sudo apt update && sudo apt install fontconfig openjdk-17-jre software-properties-common &&
+</p>
 
 #Adds the deadsnakes PPA Repository and installs python 3.7
  - sudo add-apt-repository ppa:deadsnakes/ppa && sudo apt install python3.7 python3.7-venv
