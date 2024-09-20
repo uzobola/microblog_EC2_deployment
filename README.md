@@ -15,32 +15,32 @@ A script to install Jenkins was created using the following steps:
 
 **Steps to Install Jenkins**
 **#Updates package lists and installs the following**
-sudo apt update && sudo apt install fontconfig openjdk-17-jre software-properties-common &&
+- sudo apt update && sudo apt install fontconfig openjdk-17-jre software-properties-common &&
 
 
 **#Adds the deadsnakes PPA Repository and installs python 3.7**
-sudo add-apt-repository ppa:deadsnakes/ppa && sudo apt install python3.7 python3.7-venv
+- sudo add-apt-repository ppa:deadsnakes/ppa && sudo apt install python3.7 python3.7-venv
 
 
 **#This downloads the Jenkins repository Key**
-sudo wget -O /usr/share/keyrings/jenkins-keyring.asc <https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key>
+- sudo wget -O /usr/share/keyrings/jenkins-keyring.asc <https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key>
 
 
 **#This adds the Jenkins repo to the system's sources list** 
-echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" <https://pkg.jenkins.io/debian-stable> binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+- echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" <https://pkg.jenkins.io/debian-stable> binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
 
 
 **#This updates the package lists, installs, starts, and checks the status of the Jenkins service.**
-sudo apt-get update sudo apt-get install jenkins sudo systemctl start jenkins sudo systemctl status Jenkins
+- sudo apt-get update sudo apt-get install jenkins sudo systemctl start jenkins sudo systemctl status Jenkins
 
 **#Configure the server by installing 'python3.9', 'python3.9-venv', 'python3-pip', and 'nginx'.**
 Steps to Configure the Jenkins Server
 
 **#Install python3.9** 
-sudo apt install python3.9 python3.9-venv
+- sudo apt install python3.9 python3.9-venv
 
 **#Install NGINX** 
-sudo apt update && sudo apt install nginx
+- sudo apt update && sudo apt install nginx
   
 
 ---
