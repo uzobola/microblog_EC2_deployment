@@ -24,10 +24,6 @@ class TestApp(unittest.TestCase):
         db.drop_all()
         self.app_context.pop()
 
-    #def test_homepage(self):
-    #    response = self.client.get("/", follow_redirects = True)
-    #    self.assertEqual(response.status_code, 200)
-    #   self.assertIn(b'Welcome to Microblog', response.data)
 
     def test_login_page(self):
         response = self.client.get('auth/login')
